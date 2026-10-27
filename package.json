@@ -1,0 +1,24 @@
+{
+  "name": "echoledger",
+  "version": "0.1.0",
+  "private": true,
+  "description": "Evidence-first, multilingual oral-history research platform",
+  "license": "MIT",
+  "workspaces": [
+    "client",
+    "server"
+  ],
+  "scripts": {
+    "dev": "concurrently -k -n server,client -c yellow,cyan \"npm run dev -w @echoledger/server\" \"npm run dev -w @echoledger/client\"",
+    "build": "npm run build -w @echoledger/server && npm run build -w @echoledger/client",
+    "start": "npm run start -w @echoledger/server",
+    "typecheck": "npm run typecheck -w @echoledger/server && npm run typecheck -w @echoledger/client",
+    "clean": "rm -rf client/dist server/dist"
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  },
+  "engines": {
+    "node": ">=20.19"
+  }
+}
